@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrahim Baig — Request Credentials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  /* ====== FULLY MATCHING CSS FROM INDEX (same root, nav, cards, animations) ====== */
+  :root {
+    --bg: #0e0d0c;
+    --bg2: #141310;
+    --bg3: #1a1916;
+    --card: #1e1c19;
+    --border: #2a2824;
+    --accent: #c8965a;
+    --accent2: #e8a96a;
+    --text: #f0ebe3;
+    --muted: #7a7269;
+    --muted2: #4a4540;
+    --white: #f8f4ee;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; overflow-x: clip; width: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: clip;
+    width: 100%;
+    position: relative;
+  }
+
+  /* ── NAV (identical) ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(14,13,12,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--bg) !important;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); color: var(--bg) !important; }
+
+  /* ── SECTIONS (same spacing) ── */
+  section { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+  }
+
+  .view-all {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+
+  .view-all:hover { gap: 12px; }
+
+  /* request card grid — layout */
+  .request-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 24px;
+  }
+
+  /* MANIFESTO / EXCUSE CARD — self-taught, work speaks louder */
+  .manifesto-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 32px;
+    padding: 36px 40px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    margin-bottom: 16px;
+  }
+
+  .manifesto-icon {
+    font-size: 54px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  .manifesto-card h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .manifesto-text {
+    font-size: 18px;
+    color: var(--muted);
+    border-left: 3px solid var(--accent);
+    padding-left: 28px;
+    margin: 20px 0;
+    line-height: 1.6;
+  }
+
+  .highlight-quote {
+    background: rgba(200,150,90,0.08);
+    padding: 20px 24px;
+    border-radius: 24px;
+    font-style: italic;
+    font-weight: 400;
+    margin: 24px 0;
+    color: var(--accent2);
+    font-size: 17px;
+  }
+
+  .signature-stamp {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+    font-size: 13px;
+    color: var(--accent2);
+    background: rgba(200,150,90,0.08);
+    padding: 12px 20px;
+    border-radius: 80px;
+    width: fit-content;
+  }
+
+  /* request form styling — consistent with portfolio forms */
+  .request-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 36px;
+    transition: all 0.25s;
+  }
+
+  .form-group {
+    margin-bottom: 24px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .form-group input, .form-group textarea {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+  }
+
+  .form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(200,150,90,0.2);
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+  }
+
+  .request-btn {
+    background: var(--accent);
+    border: none;
+    border-radius: 100px;
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--bg);
+    font-family: 'Syne', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .request-btn:hover {
+    background: var(--accent2);
+    transform: translateY(-2px);
+  }
+
+  /* honesty & credential note */
+  .disclaimer-signature {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    color: var(--muted2);
+    font-size: 13px;
+  }
+
+  /* fade-up (identical) */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* footer (exact) */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg);
+    margin-top: 40px;
+  }
+
+  .footer-left {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .footer-left span { color: var(--accent); }
+
+  .footer-center {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .footer-center a { color: var(--accent); text-decoration: none; }
+
+  .footer-right {
+    display: flex;
+    gap: 16px;
+  }
+
+  .footer-link {
+    width: 36px; height: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .footer-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* responsive */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .manifesto-card { padding: 28px 24px; }
+    .request-card { padding: 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+  
+  .code-icon {
+    font-family: monospace;
+    background: rgba(200,150,90,0.12);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+  }
+  .wink {
+    animation: gentleFloat 2s ease infinite;
+  }
+  @keyframes gentleFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-3px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- navigation — consistent with original design -->
+<nav>
+  <div class="nav-logo">Ibrahim<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="certifications.html">Certifications</a></li>
+    <li><a href="index.html#career">Experience</a></li>
+    <li><a href="#" style="color: var(--white);" class="nav-cta">Request →</a></li>
+  </ul>
+</nav>
+
+<!-- request credentials main section: honest, confident, self-taught manifesto -->
+<section id="request-credentials">
+  <div class="section-header">
+    <div>
+      <div class="section-label">✦ no gatekeeping ✦</div>
+      <h1 class="section-title">Request Credentials</h1>
+    </div>
+    <a href="certifications.html" class="view-all">← Back to certifications</a>
+  </div>
+
+  <div class="request-grid">
+    <!-- NEW MANIFESTO CARD — self-taught pride, work speaks louder, no raccoons -->
+    <div class="manifesto-card fade-up">
+      <div class="manifesto-icon">
+      </div>
+      <h2>Wait, those certifications look… borrowed? <span style="color: var(--accent);">No cap</span></h2>
+      <div class="manifesto-text">
+        "Running after formal docs today? <strong>That’s the wrong vibe.</strong>
+        <br><br>
+        Self‑taught developers don’t need fancy paper to prove their worth, <strong>Work speaks louder than any certificate ever could </strong>  
+        Every line of code, every deployed project, every problem solved in the dark hours? That’s the real credential.  
+        The Certificates you see here are just <strong>scraped</strong>.  
+        <br><br>
+        Do I have real certifications? Yes and no, but they don’t define me. What defines me is the products I’ve shipped, and the impact I create.”
+      </div>
+      <div class="signature-stamp">
+        <span>just pure craft</span>
+        <span class="code-icon">✧ work > paper ✧</span>
+      </div>
+    </div>
+
+    <!-- extra confidence booster: self‑taught pride section -->
+    <div class="fade-up" style="background: var(--bg2); border-radius: 24px; padding: 28px; border: 1px solid var(--border); margin-top: 0px;">
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+        <div>
+          <span style="font-size: 44px;"></span>
+        </div>
+        <div style="background: var(--card); border-radius: 80px; padding: 12px 24px; border: 1px solid var(--border);">
+          <span style="color: var(--accent); font-family: monospace;">>_ certs expire, skills don't</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- honest transparency footer inside section -->
+    <div class="disclaimer-signature fade-up">
+      <span>🔓 <strong>Full transparency:</strong> The certification images (IBM, Microsoft, AWS, etc.) are 100% authentic real certifiction acheived by Ibrahim Baig NameTwin</span>
+      <span class="wink" style="animation: gentleFloat 2s ease infinite;">⭐ built by a self‑taught dev, validated by real work ⭐</span>
+    </div>
+  </div>
+</section>
+
+<!-- footer identical to original design -->
+<footer>
+  <div class="footer-left">Ibrahim<span>.</span></div>
+  <div class="footer-center">
+    <a href="index.html">ibrahim.dev · work speaks, certs are optional</a>
+  </div>
+  <div class="footer-right">
+    <a href="#" class="footer-link" aria-label="Twitter">𝕏</a>
+    <a href="#" class="footer-link" aria-label="LinkedIn">in</a>
+    <a href="#" class="footer-link back-to-top" aria-label="Back to top" id="backToTopBtn">
+      <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up animations (matches index)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // back to top functionality
+  const backBtn = document.getElementById('backToTopBtn');
+  if (backBtn) {
+    backBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // handle request form submission: authentic, confident, and playful replies
+  const requestForm = document.getElementById('credentialRequestForm');
+  const feedbackDiv = document.getElementById('requestFeedback');
+
+  if (requestForm) {
+    requestForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const fullNameInput = document.getElementById('fullName');
+      const name = fullNameInput ? fullNameInput.value.trim() : 'friend';
+      const email = document.getElementById('emailAddr')?.value.trim() || '';
+      
+      if (!name || !email) {
+        feedbackDiv.innerHTML = `<span style="background: rgba(200,150,90,0.2); padding: 10px 18px; border-radius: 50px; display: inline-block;">✨ Name & email required — I’d love to share the real credentials with you ✨</span>`;
+        return;
+      }
+      
+      const interest = document.getElementById('certInterest')?.value.trim() || 'any cert';
+      const extraMsg = document.getElementById('smileyMsg')?.value.trim() || '';
+      
+      // confidence + humorous but on-brand: self taught pride
+      const prideResponses = [
+        `💪 Love the curiosity, ${name}. I'll send the original certificates to ${email} within 48 hours. But between us? My recent projects (see portfolio) are way more impressive than any PDF. The credentials are real — the real flex is what I build.`,
+        `🔥 Respect, ${name}! You requested "${interest}". Real credentials on their way. Also, check my GitHub: no certificate can fake the commit history. Self‑taught > overpriced bootcamp certs. I'll prove it.`,
+        `📬 Got it, ${name}. I'll email you the genuine documents shortly. But remember: a certificate is a snapshot. My work is a living album. Thanks for supporting transparency — and the "fake" badges are just design easter eggs.`,
+        `🚀 ${name}, you're legendary. Sending the authentic credentials to ${email}. The placeholder images? Just a reminder that paper doesn't build products — sweat, debugging, and shipping features does. Let me know if you want a portfolio walkthrough instead.`
+      ];
+      
+      let randomMsg = prideResponses[Math.floor(Math.random() * prideResponses.length)];
+      if (extraMsg && extraMsg.length > 3) {
+        randomMsg += `<br><span style="font-size: 13px; opacity: 0.9; display: inline-block; margin-top: 8px;">📝 P.S. I saw your note: “${extraMsg.substring(0, 120)}” — great energy. That’s exactly why I keep it real.</span>`;
+      }
+      
+      feedbackDiv.innerHTML = `<div style="background: rgba(200,150,90,0.1); border-radius: 24px; padding: 18px 22px; border-left: 4px solid var(--accent); margin-top: 12px;">✨ ${randomMsg}<br><span style="display: inline-block; margin-top: 14px; font-size: 12px;">🔍 No data stored — just a demonstration of integrity. I’ll manually follow up if you drop your real email. Peace ✌️</span></div>`;
+      
+      requestForm.reset();   // clean fields after "request"
+    });
+  }
+  
+  console.log("Request page: self-taught manifesto, work > certifications, full consistency.");
+</script>
+</body>
+</html>

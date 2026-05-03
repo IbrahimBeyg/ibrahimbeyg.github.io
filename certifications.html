@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrahim Baig — Certifications & Credentials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  /* ====== FULLY MATCHING CSS FROM INDEX ====== */
+  :root {
+    --bg: #0e0d0c;
+    --bg2: #141310;
+    --bg3: #1a1916;
+    --card: #1e1c19;
+    --border: #2a2824;
+    --accent: #c8965a;
+    --accent2: #e8a96a;
+    --text: #f0ebe3;
+    --muted: #7a7269;
+    --muted2: #4a4540;
+    --white: #f8f4ee;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; overflow-x: clip; width: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: clip;
+    width: 100%;
+    position: relative;
+  }
+
+  /* ── NAV (identical) ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(14,13,12,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--bg) !important;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); color: var(--bg) !important; }
+
+  /* ── SECTIONS (same spacing) ── */
+  section { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+  }
+
+  .view-all {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+
+  .view-all:hover { gap: 12px; }
+
+  /* ── CERTIFICATION GRID (matching projects grid exactly) ── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cert-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  /* thumb area — identical to .project-thumb */
+  .cert-thumb {
+    aspect-ratio: 4/3;
+    background: var(--bg3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cert-thumb-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    position: relative;
+  }
+
+  .cert-thumb-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* gradient placeholder (same pattern as project thumb gradients) */
+  .cert-thumb-gradient {
+    position: absolute;
+    inset: 0;
+    opacity: 0.6;
+  }
+
+  .cg-1 { background: linear-gradient(135deg, #1a1512 0%, #2d1f0e 50%, #1a1512 100%); }
+  .cg-2 { background: linear-gradient(135deg, #0e1218 0%, #0d1f2d 50%, #0e1218 100%); }
+  .cg-3 { background: linear-gradient(135deg, #0e180e 0%, #0d2d1a 50%, #0e180e 100%); }
+  .cg-4 { background: linear-gradient(135deg, #1e1518 0%, #2d0e1f 50%, #1e1518 100%); }
+  .cg-5 { background: linear-gradient(135deg, #15181e 0%, #0e1f2d 50%, #15181e 100%); }
+  .cg-6 { background: linear-gradient(135deg, #1a1a12 0%, #2a2d0e 50%, #1a1a12 100%); }
+
+  .cert-thumb-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.15);
+    z-index: 1;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .cert-tag {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: rgba(14,13,12,0.7);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(8px);
+    z-index: 2;
+  }
+
+  .cert-number {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 80px;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.10);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .cert-card:hover .cert-number {
+    color: rgba(200, 150, 90, 0.15);
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+  }
+
+  .cert-info {
+    padding: 24px;
+  }
+
+  .cert-issuer {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .cert-info h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .credential-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(200,150,90,0.08);
+    border: 1px solid rgba(200,150,90,0.2);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 12px;
+    transition: background 0.2s;
+    width: fit-content;
+  }
+
+  .cert-card:hover .credential-badge {
+    background: rgba(200,150,90,0.18);
+  }
+
+  /* fade-up animation (same as index) */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* back to top & footer area */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg);
+    margin-top: 40px;
+  }
+
+  .footer-left {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .footer-left span { color: var(--accent); }
+
+  .footer-center {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .footer-center a { color: var(--accent); text-decoration: none; }
+
+  .footer-right {
+    display: flex;
+    gap: 16px;
+  }
+
+  .footer-link {
+    width: 36px; height: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .footer-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  .back-to-top svg {
+    stroke: currentColor;
+  }
+
+  /* small additional responsive (exactly matching project grid behavior) */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .certs-grid { grid-template-columns: 1fr; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (min-width: 901px) {
+    .certs-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* optional margin adjustment for featured tools note */
+  .intro-note {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: -8px;
+    margin-bottom: 32px;
+    border-left: 2px solid var(--accent);
+    padding-left: 18px;
+    max-width: 560px;
+  }
+</style>
+</head>
+<body>
+
+<!-- navigation (mirror of index with small adjustment: certifications link active) -->
+<nav>
+  <div class="nav-logo">Ibrahim<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#" style="color: var(--white);">Certifications</a></li>
+    <li><a href="index.html#career">Experience</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's Talk →</a></li>
+  </ul>
+</nav>
+
+<!-- certifications hero / main showcase section -->
+<section id="certifications">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Credentials & Badges</div>
+      <h1 class="section-title">Certifications</h1>
+    </div>
+    <a href="index.html#contact" class="view-all">Disclaimer →</a>
+  </div>
+
+  <!-- subtle note: you will add real certificates later -->
+  <div class="intro-note">
+    ✦ Verified achievements & industry-recognized certifications.
+  </div>
+
+  <!-- Certification grid (exactly matches your projects grid style) -->
+  <div class="certs-grid">
+    
+    <!-- Template Certification 1 -->
+    <div class="cert-card fade-up" onclick="window.open('https://www.credly.com/badges/2267dabe-b1d1-467b-9232-dea67519b91b', '_blank')" style="cursor: pointer;">
+      <div class="cert-thumb">
+        <div class="cert-thumb-inner">
+          <div class="cert-thumb-gradient cg-1"></div>
+          <span class="cert-number">01</span>
+          <img src="ibm.jfif" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;">
+        </div>
+      </div>
+      <div class="cert-info">
+        <div class="cert-issuer">IBM . SkillsBuild</div>
+        <h3>Cybersecurity Fundamentals Certificate</h3>
+        <div class="credential-badge">
+          Click to verify
+        </div>
+      </div>
+    </div>
+
+    <!-- Template Certification 2 -->
+    <div class="cert-card fade-up" onclick="window.open('https://learn.microsoft.com/en-in/users/ibrahimbaig-1814/credentials/3492ade5881baf62?ref=https%3A%2F%2Fwww.linkedin.com%2F', '_blank')" style="cursor: pointer;">
+      <div class="cert-thumb">
+        <div class="cert-thumb-inner">
+          <div class="cert-thumb-gradient cg-2"></div>
+          <span class="cert-number">02</span>
+          <img src="copilot.jfif" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;">
+        </div>
+      </div>
+      <div class="cert-info">
+        <div class="cert-issuer">GITHUB · Copilot</div>
+        <h3>Prompt engineering and context crafting</h3>
+        <div class="credential-badge">
+          Click to verify
+        </div>
+      </div>
+    </div>
+
+    <!-- Template Certification 3 -->
+    <div class="cert-card fade-up" onclick="window.open('https://learn.microsoft.com/en-us/users/ibrahimbaig-1814/?tab=credentials-tab', '_blank')" style="cursor: pointer;">
+      <div class="cert-thumb">
+        <div class="cert-thumb-inner">
+          <div class="cert-thumb-gradient cg-3"></div>
+          <span class="cert-number">03</span>
+          <img src="microsoft.jfif" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;">
+        </div>
+      </div>
+      <div class="cert-info">
+        <div class="cert-issuer">MICROSOFT · AZURE AI</div>
+        <h3>Cross-Azure AI Fundamentals</h3>
+        <div class="credential-badge">
+          Click to verify
+        </div>
+      </div>
+    </div>
+
+    <!-- Template Certification 4 (extra flexibility) -->
+    <div class="cert-card fade-up" onclick="window.open('https://www.semrush.com/academy/certification/', '_blank')" style="cursor: pointer;">
+      <div class="cert-thumb">
+        <div class="cert-thumb-inner">
+          <div class="cert-thumb-gradient cg-4"></div>
+          <img src="semrush.png" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;">
+          <span class="cert-number">04</span>
+        </div>
+      </div>
+      <div class="cert-info">
+        <div class="cert-issuer">SEMRUSH · GREG GIFFORD</div>
+        <h3>Backlink Management Course</h3>
+        <div class="credential-badge">
+          Click to verify
+        </div>
+      </div>
+    </div>
+
+    <!-- Template Certification 5 -->
+    <div class="cert-card fade-up" onclick="window.open('https://www.credly.com/badges/c04a4d54-8370-415e-af4e-531ba5ec5c1c/linked_in_profile', '_blank')" style="cursor: pointer;">
+      <div class="cert-thumb">
+        <div class="cert-thumb-inner">
+          <div class="cert-thumb-gradient cg-5"></div>
+          <img src="aws.png" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;">
+          <span class="cert-number">05</span>
+        </div>
+      </div>
+      <div class="cert-info">
+        <div class="cert-issuer">AWS . Amazon</div>
+        <h3>Solutions Architect</h3>
+        <div class="credential-badge">
+          Click to verify
+        </div>
+      </div>
+    </div>
+
+<!-- Template Certification 6 -->
+<div class="cert-card fade-up" onclick="window.open('https://academy.neduet.edu.pk/contact-us', '_blank')" style="cursor: pointer;">
+  <div class="cert-thumb">
+    <div class="cert-thumb-inner">
+      <div class="cert-thumb-gradient cg-6"></div>
+      <img src="ned.jpg" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;">
+      <span class="cert-number">06</span>
+    </div>
+  </div>  <!-- ✅ Close cert-thumb here -->
+  <div class="cert-info">
+    <div class="cert-issuer">NED ACADEMY</div>
+    <h3>PITP Program in Data Science</h3>
+    <div class="credential-badge">
+      Click to verify
+    </div>
+  </div>
+</div>  <!-- ✅ Close cert-card here -->
+
+  </div>
+
+  <!-- additional placeholder row: shows that more certifications can be added (optional) -->
+  <div style="margin-top: 48px; text-align: center; border-top: 1px solid var(--border); padding-top: 48px;">
+    <p style="color: var(--muted); font-size: 13px; letter-spacing: 0.5px; font-weight: 300;">
+    </p>
+    <div style="display: flex; justify-content: center; gap: 24px; margin-top: 28px;">
+      <a href="index.html" style="display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; padding: 10px 24px; color: var(--text); text-decoration: none; font-size: 13px; font-weight: 500; transition: border-color 0.2s;">← Back to Portfolio</a>
+      <a href="index.html#contact" style="display: inline-flex; align-items: center; gap: 8px; background: var(--accent); border: none; border-radius: 100px; padding: 10px 28px; color: var(--bg); text-decoration: none; font-weight: 700; font-size: 13px; transition: background 0.2s;">Request full credential set</a>
+    </div>
+  </div>
+</section>
+
+<!-- footer with back-to-top (matching index vibe) -->
+<footer>
+  <div class="footer-left">Ibrahim<span>.</span></div>
+  <div class="footer-center">
+    <a href="index.html">ibrahim.dev</a>
+  </div>
+  <div class="footer-right">
+    <a href="#" class="footer-link" aria-label="Twitter">𝕏</a>
+    <a href="#" class="footer-link" aria-label="LinkedIn">in</a>
+    <a href="#" class="footer-link back-to-top" aria-label="Back to top" id="backToTopBtn">
+      <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up animations (identical to index)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // back-to-top functionality
+  const backBtn = document.getElementById('backToTopBtn');
+  if (backBtn) {
+    backBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Optional: dynamic nav active (if you want link highlight based on scrolling, but since it's a single page certification view we keep it subtle)
+  // highlight back link to certifications? not needed, visual match is present.
+  // fix any residual missing styles - also ensure any future image replacements can be done easily via img tags.
+  // The certification grid is fully customizable: you can replace .cert-thumb-inner with actual <img> and hide .cert-thumb-text.
+  console.log('Certification showcase page — ready to replace with your own certificate images and details.');
+</script>
+
+</body>
+</html>

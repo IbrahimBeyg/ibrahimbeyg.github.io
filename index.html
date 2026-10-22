@@ -570,6 +570,135 @@
   position: relative;
 }
 
+/* ── MOBILE APPS (portfolio extension) ── */
+  .apps-subsection {
+    margin-top: 64px;
+  }
+
+  .apps-subsection-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .apps-subsection-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .app-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+
+  .app-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .app-thumb {
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, #161411 0%, #1f1c17 50%, #131210 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 28px;
+  }
+
+  /* 512x512 icon slot — ready for future icon images */
+  .app-icon-slot {
+    width: 128px;
+    height: 128px;
+    max-width: 60%;
+    max-height: 60%;
+    aspect-ratio: 1 / 1;
+    background: var(--bg3);
+    border: 1px dashed var(--border);
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    z-index: 2;
+    transition: border-color 0.25s, color 0.25s;
+    overflow: hidden;
+  }
+
+  .app-icon-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 32px;
+  }
+
+  .app-card:hover .app-icon-slot {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .app-platform-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(14,13,12,0.7);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(8px);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .app-platform-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+    flex-shrink: 0;
+  }
+
+  .app-platform-dot.web {
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+  }
+
+  .app-card .project-number {
+    font-size: 64px;
+    bottom: 4px;
+    right: 16px;
+  }
+
   /* ── CASE STUDY ── */
   #case-study { border-top: 1px solid var(--border); }
 
@@ -1294,16 +1423,18 @@
     .mobile-avatar-wrap { display: flex; }
 
     section { padding: 72px 24px; }
-    .skills-grid, .projects-grid, .tools-grid { grid-template-columns: 1fr; }
+    .skills-grid, .projects-grid, .tools-grid, .apps-grid { grid-template-columns: 1fr; }
     .career-item { grid-template-columns: 1fr; gap: 12px; }
     #contact { padding: 80px 24px; }
     footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .apps-subsection-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 
   @media (min-width: 901px) {
     .projects-grid { grid-template-columns: repeat(3, 1fr); }
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .apps-grid { grid-template-columns: repeat(3, 1fr); }
   }
 </style>
 </head>
@@ -1398,8 +1529,8 @@
   </div>
   <div class="hero-overlay-badge" style="position:relative; bottom:auto; left:auto; margin-top:16px; display:inline-block;">
     <div class="hero-overlay-text">
-      <span class="hero-overlay-accent"> DYNAMIC WEBSITES & APP DEVELOPMENT</span>  ON iOS & Android <br>
-      <span class="hero-overlay-accent">REACTJS & FLUTTER</span> · NEXT.js · FIREBASE
+      <span class="hero-overlay-accent">DYNAMIC ANIMATION</span> &amp; MOTION DESIGN<br>
+      <span class="hero-overlay-accent">REACTJS</span> · NEXT.JS · GITHUB
     </div>
   </div>
 </div>
@@ -1425,7 +1556,7 @@
         <div class="project-tag">Click to view</div>
       </div>
       <div class="project-info">
-        <div class="project-type">Immigration Lawyers</div>
+        <div class="project-type">Mobile Tyre Service</div>
         <h3>Next-Step-Solutions.co.uk</h3>
       </div>
     </a>
@@ -1459,6 +1590,121 @@
         <h3>ShutterLife.co.uk</h3>
       </div>
     </a>
+  </div>
+
+  <!-- ── MOBILE APPS SUBSECTION ── -->
+  <div class="apps-subsection">
+    <div class="apps-subsection-header">
+      <div>
+        <div class="section-label">Mobile Apps</div>
+        <h2 class="apps-subsection-title">Apps on Google Play</h2>
+      </div>
+      <a href="#" class="view-all">View all apps →</a>
+    </div>
+
+    <div class="apps-grid">
+      <!-- App 1: Solar Load Calculator -->
+      <a class="app-card fade-up" href="https://play.google.com/store/apps/details?id=com.ibrahim.solarcalculator.solarcalc" target="_blank" rel="noopener">
+        <div class="app-thumb">
+          <div class="app-platform-tag">
+            <span class="app-platform-dot"></span> Google Play
+          </div>
+          <div class="app-icon-slot">
+              <img src="app-icon1.png" alt="Solar Load Calculator icon">
+          </div>
+          <span class="project-number">01</span>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Solar · Utility</div>
+          <h3>Solar Load Calculator</h3>
+        </div>
+      </a>
+
+      <!-- App 2: InvenFlo Real Estate -->
+      <a class="app-card fade-up" href="https://play.google.com/store/apps/details?id=com.invenflo.ibrahim.invenflo" target="_blank" rel="noopener">
+        <div class="app-thumb">
+          <div class="app-platform-tag">
+            <span class="app-platform-dot"></span> Google Play
+          </div>
+          <div class="app-icon-slot">
+           <img src="app-icon2.png" alt="InvenFlo Real Estate icon">
+          </div>
+          <span class="project-number">02</span>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Real Estate</div>
+          <h3>InvenFlo Real Estate</h3>
+        </div>
+      </a>
+
+      <!-- App 3: Property Tools -->
+      <a class="app-card fade-up" href="https://play.google.com/store/apps/details?id=com.zameentools.zameen_tools" target="_blank" rel="noopener">
+        <div class="app-thumb">
+          <div class="app-platform-tag">
+            <span class="app-platform-dot"></span> Google Play
+          </div>
+          <div class="app-icon-slot">
+             <img src="app-icon3.png" alt="InvenFlo Real Estate icon">
+          </div>
+          <span class="project-number">03</span>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Property · Tools</div>
+          <h3>Property Tools</h3>
+        </div>
+      </a>
+
+      <!-- App 4: MyGoals -->
+      <a class="app-card fade-up" href="https://play.google.com/store/apps/details?id=com.ibrahim.mygoals.mygoals" target="_blank" rel="noopener">
+        <div class="app-thumb">
+          <div class="app-platform-tag">
+            <span class="app-platform-dot"></span> Google Play
+          </div>
+          <div class="app-icon-slot">
+            <img src="app-icon4.png" alt="MyGoals icon">
+          </div>
+          <span class="project-number">04</span>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Productivity</div>
+          <h3>MyGoals</h3>
+        </div>
+      </a>
+
+      <!-- App 5: Drive Profit Calculator -->
+      <a class="app-card fade-up" href="https://play.google.com/store/apps/details?id=com.Ibrahim.ride.rideprofitcalculator" target="_blank" rel="noopener">
+        <div class="app-thumb">
+          <div class="app-platform-tag">
+            <span class="app-platform-dot"></span> Google Play
+          </div>
+          <div class="app-icon-slot">
+            <img src="app-icon5.png" alt="Drive Profit Calculator icon">
+          </div>
+          <span class="project-number">05</span>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Finance · Utility</div>
+          <h3>Drive Profit Calculator</h3>
+        </div>
+      </a>
+
+      <!-- App 6: Property Tax Calculator (Web App) -->
+      <a class="app-card fade-up" href="https://pakpropertytaxcalc.netlify.app/" target="_blank" rel="noopener">
+        <div class="app-thumb">
+          <div class="app-platform-tag">
+            <span class="app-platform-dot web"></span> Web App
+          </div>
+          <div class="app-icon-slot">
+            <img src="app-icon6.png" alt="Property Tax Calculator icon">
+          </div>
+          <span class="project-number">06</span>
+        </div>
+        <div class="project-info">
+          <div class="project-type">Property · Tax</div>
+          <h3>Property Tax Calculator</h3>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1595,7 +1841,7 @@
     </div>
   </div>
   <div class="career-actions">
-    <a href="https://ibrahimbeyg.github.io/certifications.html" class="btn-primary">🎓 See Certifications</a>
+    <a href="Certifications.html" class="btn-primary">🎓 See Certifications</a>
   </div>
 </section>
 
